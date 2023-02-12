@@ -36,3 +36,26 @@ spec:
 
 ---
 
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: mongodb-deployment
+  labels:
+    app: mongodb
+spec:
+  replicas: 
+  selector:
+    matchLabels:
+      app: mongodb
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+      - name: mongodb
+        image: mongo
+        ports:
+        - name: mongodbport
+          containerPort: 27017
+          protocol: TCP
